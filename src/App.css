@@ -17,11 +17,15 @@
 
 .main-list-styles > div {
 	margin-bottom: 3%;
-	color: #75CAC7;
+	color: #343137;
 } 
 
 .main-list-item {
-	color: #343731 !important;
+	color: rgb(142 142 147) !important;
+}
+
+.anticon-down {
+	color: #75cac7;
 }
 
 .bottom-navbar {
