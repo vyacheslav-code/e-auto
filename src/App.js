@@ -12,7 +12,7 @@ function App() {
     return (
         <BrowserRouter>
         	<Topnavbar/>
-            <Navbar/>
+            <Navbar />
             <Switch>
                 <Route path="/" exact={true} component={Feed}/>
                 <Route path="/services" component={Services}/>
