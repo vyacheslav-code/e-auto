@@ -58,7 +58,7 @@
 	padding: 10% 5%;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
 	width: 90%;
 	padding: 2% 5%;
 	border-radius: 18pt;
@@ -116,4 +116,8 @@ button[type="button"] {
 
 input {
 	outline: none;
+}
+
+.ant-input {
+	margin-top: 5%;
 }
