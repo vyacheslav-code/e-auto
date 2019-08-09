@@ -26,16 +26,16 @@ class App extends React.Component {
 
     handleLogin = (data) => {
         const {login, password} = data;
-        this.users.some(user => {
+        this.users.forEach(user => {
             if (user.login === login && user.password === password) {
                 this.setState({
                     loggedIn: true,
                     id: user.id
                 });
                 this.props.history.push('/');
-                return true;
             }
         })
+
     };
 
     render() {
