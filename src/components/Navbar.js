@@ -6,5 +6,6 @@ export default () => (
     <div>
         <Link to="/"> <Icon type="home"/> </Link>
         <Link to="/services"> <Icon type="thunderbolt"/> </Link>
+        <Link to="/services"> <Icon type="user"/> </Link>
     </div>
 )

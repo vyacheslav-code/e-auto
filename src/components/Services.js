@@ -1,5 +1,6 @@
 import React from 'react'
-import {Icon} from 'antd';
+import {Icon, Avatar} from 'antd'
+import {Link} from 'react-router-dom'
 
 export default class extends React.Component {
     state = {
@@ -19,7 +20,9 @@ export default class extends React.Component {
                         {display: this.state.collapsed ? 'none' : ''}
                     }
                 >
-                    123
+                    <Link to="/report">
+                        <Avatar size={64} icon={'camera'} />
+                    </Link>
                 </div>
             </div>
         )
