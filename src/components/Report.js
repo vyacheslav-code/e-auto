@@ -8,7 +8,9 @@ export default class extends React.Component {
         file: undefined
     };
 
-    handleTextChange = e => this.setState({text: e.value});
+    handleTextChange = e => {
+        this.setState({text: e.target.value})
+    };
 
     handleFileChange = e => {
         const file = e.target.files[0];

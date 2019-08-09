@@ -1,25 +1,60 @@
 import React from 'react'
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import { Route, Switch, withRouter} from "react-router-dom";
 import Feed from './components/Feed'
 import Services from './components/Services'
 import Navbar from './components/Navbar'
 import Topnavbar from './components/Topnavbar'
 import Report from './components/Report'
+import Login from './components/Login'
 
 import './App.css';
 
-function App() {
-    return (
-        <BrowserRouter>
-        	<Topnavbar/>
-            <Navbar />
-            <Switch>
-                <Route path="/" exact={true} component={Feed}/>
-                <Route path="/services" component={Services}/>
-                <Route path="/report" component={Report} />
-            </Switch>
-        </BrowserRouter>
-    );
+class App extends React.Component {
+
+    state = {
+        loggedIn: false,
+        id: undefined
+    };
+
+    users = [
+        {
+            login: '0635224205',
+            password: '12345',
+            id: '1'
+        }
+    ];
+
+    handleLogin = (data) => {
+        const {login, password} = data;
+        this.users.some(user => {
+            if (user.login === login && user.password === password) {
+                this.setState({
+                    loggedIn: true,
+                    id: user.id
+                });
+                this.props.history.push('/');
+                return true;
+            }
+        })
+    };
+
+    render() {
+        return (
+            this.state.loggedIn ?
+                <div>
+                    <Topnavbar/>
+                    <Navbar/>
+                    <Switch>
+                        <Route path="/" exact={true} component={Feed}/>
+                        <Route path="/services" component={Services}/>
+                        <Route path="/report" component={Report}/>
+                    </Switch>
+                </div>
+                :
+                <Login handleLogin={this.handleLogin}/>
+        );
+    }
+
 }
 
-export default App;
+export default withRouter(props => <App {...props} />);
