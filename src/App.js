@@ -4,6 +4,7 @@ import Feed from './components/Feed'
 import Services from './components/Services'
 import Navbar from './components/Navbar'
 import Topnavbar from './components/Topnavbar'
+import Report from './components/Report'
 
 import './App.css';
 
@@ -15,6 +16,7 @@ function App() {
             <Switch>
                 <Route path="/" exact={true} component={Feed}/>
                 <Route path="/services" component={Services}/>
+                <Route path="/report" component={Report} />
             </Switch>
         </BrowserRouter>
     );
