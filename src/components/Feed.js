@@ -19,9 +19,9 @@ export default class extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className = "main-list-styles">
                 {this.state.events.map((event) => (
-                    <Event name={event.name} key={event.id} content={event.content}/>
+                    <Event name={event.name} key={event.id} content={event.content} className = "main-list-item"/>
                 ))}
             </div>
         )
