@@ -26,11 +26,15 @@ export default class extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className = "input-styles">
                 <Input onChange={this.handleTextChange} value={this.state.text}/>
-                <input type="file" onChange={this.handleFileChange}/>
-                {this.state.url && <img src={this.state.url} alt="uploaded file"/>}
-                <Button type="primary"> Отправить </Button>
+                <br/>
+                <Input onChange={this.handleTextChange} value={this.state.text}/>
+                <br/>
+                <input type="file" onChange={this.handleFileChange} className = "btn-file"/>
+                <div className = "file-pic">Виберіть файл</div>
+                {this.state.url && <img src={this.state.url} alt="Файл прикріплений"/>}
+                <Button type="primary"> Відправити </Button>
             </div>
         )
     }
