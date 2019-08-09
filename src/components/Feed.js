@@ -1,5 +1,6 @@
 import React from 'react'
 import Event from './Event'
+import axios from 'axios'
 
 export default class extends React.Component {
     state = {
@@ -16,6 +17,10 @@ export default class extends React.Component {
             }
         ]
     };
+
+    componentDidMount() {
+        axios.get('/cars').then(response => console.log(response));
+    }
 
     render() {
         return (
