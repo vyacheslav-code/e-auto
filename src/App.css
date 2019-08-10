@@ -121,3 +121,14 @@ input {
 .ant-input {
 	margin-top: 5%;
 }
+
+.author-name {
+	margin: 5% 0;
+	color: #E62727;
+	font-weight: 600;
+}
+
+.img-autor {
+	width: 100%;
+	height: auto;
+}
