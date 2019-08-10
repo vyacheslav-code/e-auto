@@ -14,6 +14,8 @@
 
 .main-list-styles {
 	padding: 5%;
+	overflow-y: auto;
+	height: calc(100% - 180px);
 }
 
 .main-list-styles > div {
@@ -33,6 +35,7 @@
 	background: #f4f4f4;
 	bottom: 0;
 	position: absolute;
+	overflow: auto;
 	width: 90%;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
@@ -120,4 +123,15 @@ input {
 
 .ant-input {
 	margin-top: 5%;
+}
+
+.author-name {
+	margin: 5% 0;
+	color: #E62727;
+	font-weight: 600;
+}
+
+.img-autor {
+	width: 100%;
+	height: auto;
 }
