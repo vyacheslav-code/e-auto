@@ -13,7 +13,7 @@ export default class extends React.Component {
         return (
             <div>
                 <div onClick={this.toggleCollapsed}>
-                    {this.props.event.nember + ' - ' + this.props.event.message} <Icon type="down" />
+                    {this.props.event.number + ' - ' + this.props.event.message} <Icon type="down" />
                 </div>
                 <div style={
                     {
