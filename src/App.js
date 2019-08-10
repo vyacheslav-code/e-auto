@@ -18,22 +18,18 @@ class App extends React.Component {
 
     users = [
         {
-            login: 'test',
-            password: 'test',
-            number: 'АВ5455СВ',
+            login: '',
+            password: '',
             id: '1'
         }
     ];
 
     handleLogin = (data) => {
-        const {login, password} = data;
-        this.users.forEach(user => {
-            if (user.login === login && user.password === password) {
-                this.setState({
-                    loggedIn: true,
-                    user
-                });
-                this.props.history.push('/');
+        const {login} = data;
+        this.setState({
+            loggedIn: true,
+            user: {
+                login
             }
         })
 
@@ -47,7 +43,7 @@ class App extends React.Component {
                     <Navbar/>
                     <Switch>
                         <Route path="/" exact={true}
-                               component={props => <Feed {...props} number={this.state.user.number}/>}/>
+                               component={props => <Feed {...props} number={this.state.user.login}/>}/>
                         <Route path="/services" component={Services}/>
                         <Route path="/report" component={Report}/>
                     </Switch>

@@ -12,12 +12,10 @@ export default class extends React.Component {
     async componentDidMount() {
         this.setState({ loading: true });
         try {
-            const result = await axios.get('/cars');
+            const result = await axios.get(`/cars/${this.props.number}`);
             let events = [];
             for (let ev of result.data.cars) {
-                if (ev.nember === this.props.number) {
                     events.push(ev);
-                }
             }
             this.setState({
                 events,
