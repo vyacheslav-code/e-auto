@@ -31,7 +31,7 @@ export default class extends React.Component {
     render() {
         return (
             <div className = "main-list-styles">
-                {this.state.loading ? <Icon type={'sync'} spin /> :
+                {this.state.loading ? <Icon type="loading" /> :
                     this.state.events.map((event) => (
                         <Event event={event} className = "main-list-item"/>
                     ))
