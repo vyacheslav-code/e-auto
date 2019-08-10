@@ -1,13 +1,15 @@
 import React from 'react'
-import {Input, Button} from 'antd'
+import {Input, Button, Icon} from 'antd'
+import {withRouter} from 'react-router-dom'
 import axios from 'axios'
 
-export default class extends React.Component {
+class Report extends React.Component {
     state = {
         text: '',
         url: undefined,
         file: undefined,
-        number: ''
+        number: '',
+        loading: false
     };
 
     handleTextChange = e => {
@@ -34,6 +36,7 @@ export default class extends React.Component {
 
     handleReport = () => {
         if (this.state.text !== '' && this.state.number !== '') {
+            this.setState({ loading: true });
             axios.post(
                 '/cars', {
                     nember: this.state.number,
@@ -41,26 +44,28 @@ export default class extends React.Component {
                     file: this.state.file,
                     message: this.state.text
                 }
-            )
+            ).then( response => {
+                this.props.history.push('/');
+            }).catch( e => {
+                this.props.history.push('/');
+            })
         }
     };
 
     render() {
         return (
-
             <div className = "input-styles">
-
                 <Input onChange={this.handleNumberChange} value={this.state.number}/>
-
-                <Input onChange={this.handleTextChange} value={this.state.text}/>
                 <br/>
                 <Input onChange={this.handleTextChange} value={this.state.text}/>
                 <br/>
                 <input type="file" onChange={this.handleFileChange} className = "btn-file"/>
                 <div className = "file-pic">Виберіть файл</div>
                 {this.state.url && <img src={this.state.url} alt="Файл прикріплений"/>}
-                <Button type="primary"> Відправити </Button>
+                {this.state.loading ? <Icon type="loading" /> : <Button type="primary" onClick={this.handleReport}> Відправити </Button>}
             </div>
         )
     }
 }
+
+export default withRouter(props => <Report {...props} />);

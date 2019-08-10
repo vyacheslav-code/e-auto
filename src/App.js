@@ -18,8 +18,8 @@ class App extends React.Component {
 
     users = [
         {
-            login: '0635224205',
-            password: '12345',
+            login: 'test',
+            password: 'test',
             number: 'АВ5455СВ',
             id: '1'
         }
