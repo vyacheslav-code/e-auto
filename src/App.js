@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch, withRouter} from "react-router-dom";
+import {Route, Switch, withRouter} from "react-router-dom";
 import Feed from './components/Feed'
 import Services from './components/Services'
 import Navbar from './components/Navbar'
@@ -13,13 +13,14 @@ class App extends React.Component {
 
     state = {
         loggedIn: false,
-        id: undefined
+        user: undefined
     };
 
     users = [
         {
             login: '0635224205',
             password: '12345',
+            number: 'АВ5455СВ',
             id: '1'
         }
     ];
@@ -30,7 +31,7 @@ class App extends React.Component {
             if (user.login === login && user.password === password) {
                 this.setState({
                     loggedIn: true,
-                    id: user.id
+                    user
                 });
                 this.props.history.push('/');
             }
@@ -45,7 +46,8 @@ class App extends React.Component {
                     <Topnavbar/>
                     <Navbar/>
                     <Switch>
-                        <Route path="/" exact={true} component={Feed}/>
+                        <Route path="/" exact={true}
+                               component={props => <Feed {...props} number={this.state.user.number}/>}/>
                         <Route path="/services" component={Services}/>
                         <Route path="/report" component={Report}/>
                     </Switch>

@@ -1,11 +1,13 @@
 import React from 'react'
 import {Input, Button} from 'antd'
+import axios from 'axios'
 
 export default class extends React.Component {
     state = {
         text: '',
         url: undefined,
-        file: undefined
+        file: undefined,
+        number: ''
     };
 
     handleTextChange = e => {
@@ -26,9 +28,30 @@ export default class extends React.Component {
         reader.readAsDataURL(file);
     };
 
+    handleNumberChange = e => {
+        this.setState({ number: e.target.value });
+    };
+
+    handleReport = () => {
+        if (this.state.text !== '' && this.state.number !== '') {
+            axios.post(
+                '/cars', {
+                    nember: this.state.number,
+                    sender: this.props.name,
+                    file: this.state.file,
+                    message: this.state.text
+                }
+            )
+        }
+    };
+
     render() {
         return (
+
             <div className = "input-styles">
+
+                <Input onChange={this.handleNumberChange} value={this.state.number}/>
+
                 <Input onChange={this.handleTextChange} value={this.state.text}/>
                 <br/>
                 <Input onChange={this.handleTextChange} value={this.state.text}/>
