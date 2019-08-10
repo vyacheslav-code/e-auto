@@ -22,7 +22,7 @@ export default class extends React.Component {
                         display: this.state.collapsed ? 'none' : ''
                     }
                 }>
-                    {this.props.event.sender+ ', ' +this.props.event.contact}
+                    {this.props.event.sender+ ', ' +this.props.event.contact + ', '}
                     {this.props.event.address}
                     {this.props.event.date}
                     {this.props.event.files.map(file => (
