@@ -15,7 +15,9 @@ export default class extends React.Component {
                 <div onClick={this.toggleCollapsed}>
                     {this.props.event.number + ' - ' + this.props.event.message} <Icon type="down" />
                 </div>
-                <div style={
+                <div
+                    className="author-name"
+                    style={
                     {
                         display: this.state.collapsed ? 'none' : ''
                     }
