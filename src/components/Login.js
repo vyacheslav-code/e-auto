@@ -15,8 +15,10 @@ export default class extends React.Component {
 
     render() {
         return (
-           <div>
+           <div className = "main-list-styles">
+           <label for = "login">Логін   </label>
                 <Input prefix={<Icon type={'user'} />} onChange={this.onChangeLogin}/>
+                <label for = "password">Пароль   </label>
                 <Input prefix={<Icon type={'lock'} />} type="password" onChange={this.onChangePassword}/>
                 <Button onClick={this.handleLogin}> Увійти</Button>
             </div>
