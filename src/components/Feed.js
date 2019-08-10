@@ -1,33 +1,41 @@
 import React from 'react'
 import Event from './Event'
+import {Icon} from 'antd'
 import axios from 'axios'
 
 export default class extends React.Component {
     state = {
-        events: [
-            {
-                name: 'Event 1',
-                content: 'Event 1 content',
-                id: 1
-            },
-            {
-                name: 'Event 2',
-                content: 'Event 2 content',
-                id: 2
-            }
-        ]
+        loading: false,
+        events: []
     };
 
-    componentDidMount() {
-        axios.get('/cars').then(response => console.log(response));
+    async componentDidMount() {
+        this.setState({ loading: true });
+        try {
+            const result = await axios.get('/cars');
+            let events = [];
+            for (let ev of result.data.cars) {
+                if (ev.nember === this.props.number) {
+                    events.push(ev);
+                }
+            }
+            this.setState({
+                events,
+                loading: false
+            })
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     render() {
         return (
             <div className = "main-list-styles">
-                {this.state.events.map((event) => (
-                    <Event name={event.name} key={event.id} content={event.content} className = "main-list-item"/>
-                ))}
+                {this.state.loading ? <Icon type={'sync'} spin /> :
+                    this.state.events.map((event) => (
+                        <Event event={event} className = "main-list-item"/>
+                    ))
+                }
             </div>
         )
     }
